@@ -1,65 +1,93 @@
-# Subway Builder — Scotland Cities Pack
+# Subway Builder — Scotland Cities Mod
 
-A data pack for [Kronifer's Subway Builder patcher](https://github.com/Kronifer/subwaybuilder-patcher/tree/main) containing map tiles and processed city data for Scottish cities.
+API v1.0.0 mod for [Subway Builder](https://store.steampowered.com/app/1499710/Subway_Builder/)
+that adds Scottish metro areas: **Dundee**, **Edinburgh**, and **Glasgow**.
 
-This repository is a **file store** — drop your generated `.pmtiles` and processed-data folders in here, then follow `instructions.txt` to wire them into the patcher.
+> **Large files (tiles + data) are distributed via
+> [GitHub Releases](https://github.com/Jack-Beal/ScotlandSubwayBuilderCities/releases)
+> — the repo itself stays small.**
 
 ---
 
-## Quick Start
+## Quick Install
 
-Read **[instructions.txt](instructions.txt)** for full Windows install steps.
+1. **Download the latest release** from
+   [Releases](https://github.com/Jack-Beal/ScotlandSubwayBuilderCities/releases).
+2. **Install the mod** — copy the `scotland-cities/` folder into the game's
+   mods directory.
+3. **Place data files** — unzip each `data-<CODE>.zip` into the matching
+   `data/<CODE>/` folder.
+4. **Place tile files** — copy each `<CODE>.pmtiles` file into `server/tiles/`.
+5. **Start the server** — run `server.bat` (Windows) or `./server.sh`
+   (Mac/Linux) to start the local tile/data server at `http://localhost:8081`.
+6. **Play** — launch the game; a "Scotland" tab should appear in the city picker.
 
 ---
 
 ## Active Cities
 
-| Code | City | Status |
-|------|------|--------|
-| DND  | Dundee | 🟡 Placeholder — files not yet generated |
-| EDI  | Edinburgh | 🟡 Placeholder — files not yet generated |
-| GLA  | Glasgow | 🟡 Placeholder — files not yet generated |
+| Code | City | Population | Status |
+|------|------|-----------|--------|
+| DND  | Dundee | ~250 000 | 🟡 Data files not yet generated |
+| EDI  | Edinburgh | ~900 000 | 🟡 Data files not yet generated |
+| GLA  | Glasgow | ~1 100 000 | 🟡 Data files not yet generated |
 
-### Metro Extent Notes
+Edinburgh's extent includes **Inverkeithing** across the Firth of Forth.
 
-Cities use a **commuter-belt scale**, not just the city core. Edinburgh's intended extent includes the city out to roughly the ring road **and** Inverkeithing on the north side of the Forth. See [docs/metro_extent_notes.md](docs/metro_extent_notes.md) for full intent notes.
+### Planned Cities (not yet active)
 
----
-
-## Planned Cities (not yet active)
-
-Aberdeen (ABD), Inverness (INV), Stirling (STL), Perth (PTH) — stubs only; see [planned/](planned/).
-
-Want to contribute a city? See [docs/adding_a_city.md](docs/adding_a_city.md).
+Aberdeen (ABD), Inverness (INV), Stirling (STL), Perth (PTH) are planned
+for future releases.
 
 ---
 
-## Where Files Go in the Patcher
+## Repository Layout
 
-| This repo path | Patcher destination |
-|---|---|
-| `map_tiles/<CODE>.pmtiles` | `map_files/<CODE>.pmtiles` |
-| `processed_data/<CODE>/` | patcher processed-data directory |
+```
+/
+  scotland-cities/    ← copy into game mods directory
+    manifest.json
+    index.js
+  data/               ← place downloaded data files here
+    DND/
+    EDI/
+    GLA/
+  server/             ← local tile/data server
+    server.mjs
+    tiles/            ← place <CODE>.pmtiles files here
+  server.bat          ← Windows: start the server
+  server.sh           ← Mac/Linux: start the server
+  docs/               ← data generation and release guides
+```
 
 ---
 
-## Large Files and `.gitignore`
+## Generating Data Yourself
 
-By default, `.gitignore` excludes `*.pmtiles`, `*.mbtiles`, large GeoJSON archives, etc., to keep the repo lightweight. If you want to commit binaries, remove the relevant lines from `.gitignore` or consider using [Git LFS](https://git-lfs.github.com/) or GitHub Releases to host them.
+Two paths are available:
+
+| Path | Guide | Requirements |
+|------|-------|--------------|
+| **Fast** (approximate) | [docs/data_generation_fast.md](docs/data_generation_fast.md) | Python, osmium-tool, GDAL |
+| **Accurate** (OSRM routing) | [docs/data_generation_osrm_docker.md](docs/data_generation_osrm_docker.md) | + Docker |
 
 ---
 
 ## Documentation
 
-- [docs/overview.md](docs/overview.md) — purpose and pack structure
-- [docs/file_layout.md](docs/file_layout.md) — expected file names per city
-- [docs/adding_a_city.md](docs/adding_a_city.md) — how to add a new city
-- [docs/metro_extent_notes.md](docs/metro_extent_notes.md) — commuter-belt extent intent per city
+| File | Contents |
+|------|----------|
+| [docs/bbox_and_extents.md](docs/bbox_and_extents.md) | Bounding boxes and metro scopes |
+| [docs/data_generation_fast.md](docs/data_generation_fast.md) | Fast data generation (no Docker) |
+| [docs/data_generation_osrm_docker.md](docs/data_generation_osrm_docker.md) | Accurate routing with OSRM + Docker |
+| [docs/release_process.md](docs/release_process.md) | How to publish a release |
+| [server/README.md](server/README.md) | Local server setup |
+| [data/README.md](data/README.md) | Data folder layout |
 
 ---
 
 ## Credits
 
-Data generated from public OSM and public population/jobs datasets; methodology to be documented.
+Data generated from public OSM and public population/jobs datasets.
 
 License: MIT — see [LICENSE](LICENSE).
