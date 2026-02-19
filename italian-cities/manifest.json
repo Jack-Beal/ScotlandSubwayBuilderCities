@@ -1,0 +1,10 @@
+{
+    "id": "com.MassimilianoPrandi.ItalianCities",
+    "name": "Italian Cities",
+    "description": "Adds 15 italian cities to the game.",
+    "version": "1.2.0",
+    "author": { 
+        "name": "Massimiliano Prandi"
+    },
+    "main": "index.js"
+}
