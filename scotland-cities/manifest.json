@@ -1,0 +1,10 @@
+{
+    "id": "com.Jack-Beal.ScotlandCities",
+    "name": "Scotland Cities",
+    "description": "Adds Scottish cities to the game.",
+    "version": "1.0.0",
+    "author": { 
+        "name": "Jack Beal"
+    },
+    "main": "index.js"
+}
