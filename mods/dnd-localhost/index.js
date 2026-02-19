@@ -39,10 +39,10 @@
 
   // Point the city data files at the local data server
   api.cities.setCityDataFiles(CODE, {
-    buildingsIndex: LOCAL_SERVER + "/data/" + CODE + "/buildings_index.json.gz",
-    demandData: LOCAL_SERVER + "/data/" + CODE + "/demand_data.json.gz",
-    roads: LOCAL_SERVER + "/data/" + CODE + "/roads.geojson.gz",
-    runwaysTaxiways: LOCAL_SERVER + "/data/" + CODE + "/runways_taxiways.geojson.gz",
+    buildingsIndex: LOCAL_SERVER + "/data/buildings_index.json.gz",
+    demandData: LOCAL_SERVER + "/data/demand_data.json.gz",
+    roads: LOCAL_SERVER + "/data/roads.geojson.gz",
+    runwaysTaxiways: LOCAL_SERVER + "/data/runways_taxiways.geojson.gz",
   });
 
   // Disable layers that are not available locally

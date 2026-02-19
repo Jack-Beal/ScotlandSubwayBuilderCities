@@ -42,6 +42,10 @@ const { port: PORT, host: HOST } = parseArgs(process.argv.slice(2));
 const DATA_DIR = path.resolve(__dirname, "..", "data");
 const TILES_DIR = path.resolve(__dirname, "tiles");
 
+// City code used as fallback when the game requests /data/<filename> directly
+// (without a city subfolder).  Change this to switch the default city.
+const DEFAULT_CITY_CODE = "DND";
+
 // ─── Node.js file source for PMTiles ─────────────────────────────────────────
 
 /**
@@ -188,6 +192,17 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(403, { "Content-Type": "text/plain" });
       res.end("Forbidden");
       return;
+    }
+    // If the resolved path doesn't exist and the relative portion is a bare
+    // filename (no sub-directory), try the default city folder as a fallback.
+    // This lets the game request /data/buildings_index.json.gz and still find
+    // data/DND/buildings_index.json.gz without duplicating files.
+    if (path.basename(relative) === relative && !fs.existsSync(filePath)) {
+      const fallback = path.join(DATA_DIR, DEFAULT_CITY_CODE, relative);
+      if (fallback.startsWith(DATA_DIR + path.sep) && fs.existsSync(fallback)) {
+        serveFile(fallback, req, res);
+        return;
+      }
     }
     serveFile(filePath, req, res);
     return;
