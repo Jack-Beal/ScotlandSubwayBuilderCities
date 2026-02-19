@@ -1,0 +1,16 @@
+{
+  "name": "scotland-cities-tools",
+  "version": "1.0.0",
+  "description": "Generator and validation scripts for Scotland Cities mod data files",
+  "type": "module",
+  "scripts": {
+    "gen:buildings": "node generate_buildings_index.mjs",
+    "gen:demand": "node generate_demand_data.mjs",
+    "gen:all": "node gen_all.mjs",
+    "validate": "node validate_outputs.mjs"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "stream-json": "^1.9.1"
+  }
+}

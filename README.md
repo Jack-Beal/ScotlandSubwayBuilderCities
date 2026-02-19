@@ -55,6 +55,12 @@ for future releases.
   server/             ← local tile/data server
     server.mjs
     tiles/            ← place <CODE>.pmtiles files here
+  tools/              ← Node.js generator scripts
+    generate_buildings_index.mjs
+    generate_demand_data.mjs
+    validate_outputs.mjs
+    package.json
+  package.json        ← npm run gen:* convenience scripts
   server.bat          ← Windows: start the server
   server.sh           ← Mac/Linux: start the server
   docs/               ← data generation and release guides
@@ -68,7 +74,8 @@ Two paths are available:
 
 | Path | Guide | Requirements |
 |------|-------|--------------|
-| **Fast** (approximate) | [docs/data_generation_fast.md](docs/data_generation_fast.md) | Python, osmium-tool, GDAL |
+| **Node.js generators** (recommended) | [docs/generators.md](docs/generators.md) | Node.js ≥ 18, OSM building GeoJSON |
+| **Fast** (approximate, Python) | [docs/data_generation_fast.md](docs/data_generation_fast.md) | Python, osmium-tool, GDAL |
 | **Accurate** (OSRM routing) | [docs/data_generation_osrm_docker.md](docs/data_generation_osrm_docker.md) | + Docker |
 
 ---
@@ -77,6 +84,7 @@ Two paths are available:
 
 | File | Contents |
 |------|----------|
+| [docs/generators.md](docs/generators.md) | Node.js generator scripts (recommended) |
 | [docs/bbox_and_extents.md](docs/bbox_and_extents.md) | Bounding boxes and metro scopes |
 | [docs/data_generation_fast.md](docs/data_generation_fast.md) | Fast data generation (no Docker) |
 | [docs/data_generation_osrm_docker.md](docs/data_generation_osrm_docker.md) | Accurate routing with OSRM + Docker |

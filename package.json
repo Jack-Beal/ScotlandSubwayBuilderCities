@@ -1,0 +1,12 @@
+{
+  "name": "scotland-subway-builder-cities",
+  "version": "1.0.0",
+  "description": "Scotland Cities mod for Subway Builder — generator scripts and local server",
+  "private": true,
+  "scripts": {
+    "gen:buildings": "node tools/generate_buildings_index.mjs",
+    "gen:demand": "node tools/generate_demand_data.mjs",
+    "gen:all": "node tools/gen_all.mjs",
+    "validate": "node tools/validate_outputs.mjs"
+  }
+}

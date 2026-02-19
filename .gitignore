@@ -10,8 +10,13 @@
 
 # Node.js
 server/node_modules/
+tools/node_modules/
 node_modules/
 npm-debug.log*
+package-lock.json
+
+# Intermediate build artifacts (large OSM exports — not committed)
+build/
 
 # OS and editor noise
 .DS_Store
