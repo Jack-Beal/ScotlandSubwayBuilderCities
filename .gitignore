@@ -1,0 +1,16 @@
+# Large generated / binary artifacts
+# (remove these lines or use Git LFS / GitHub Releases if you want to commit them)
+*.pmtiles
+*.mbtiles
+*.json.gz
+*.geojson.gz
+*.osm.pbf
+*.zip
+*.7z
+*.rar
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
