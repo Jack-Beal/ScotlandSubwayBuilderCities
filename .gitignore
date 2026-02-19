@@ -1,5 +1,4 @@
-# Large generated / binary artifacts
-# (remove these lines or use Git LFS / GitHub Releases if you want to commit them)
+# Large generated / binary artifacts — use GitHub Releases to distribute these
 *.pmtiles
 *.mbtiles
 *.json.gz
@@ -8,6 +7,11 @@
 *.zip
 *.7z
 *.rar
+
+# Node.js
+server/node_modules/
+node_modules/
+npm-debug.log*
 
 # OS and editor noise
 .DS_Store

@@ -1,0 +1,10 @@
+{
+  "name": "scotland-cities-server",
+  "version": "1.0.0",
+  "description": "Local tile and data server for the Scotland Cities mod",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {}
+}
