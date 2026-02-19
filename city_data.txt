@@ -1,0 +1,30 @@
+// Paste the contents of this file inside the `places: [ ... ]` array in the patcher's config.js.
+// ACTIVE cities only: DND, EDI, GLA.
+// All bbox values are placeholder TODO — refine to commuter-belt extents before generating tiles.
+
+// TODO: refine bbox to commuter-belt extent (include key commuter towns around Dundee, e.g. Broughty Ferry, Carnoustie side)
+{
+  "code": "DND",
+  "name": "Dundee",
+  "description": "Connect the city centre, waterfront, and surrounding commuter belt of Tayside",
+  "bbox": [-3.18, 56.38, -2.78, 56.58],
+  "population": 250000
+},
+
+// TODO: refine bbox to commuter-belt extent (include Inverkeithing north of the Forth)
+{
+  "code": "EDI",
+  "name": "Edinburgh",
+  "description": "Connect the historic core, western employment, and Leith waterfront across the commuter belt",
+  "bbox": [-3.60, 55.82, -3.00, 56.10],
+  "population": 900000
+},
+
+// TODO: refine bbox to commuter-belt extent (include East Kilbride, Paisley, Clydebank corridor)
+{
+  "code": "GLA",
+  "name": "Glasgow",
+  "description": "Connect the city centre, riverside regeneration, and the wider Clydeside commuter belt",
+  "bbox": [-4.50, 55.72, -3.95, 55.98],
+  "population": 1100000
+}

@@ -1,0 +1,131 @@
+===========================================================
+ Subway Builder — Scotland Cities Pack
+ Installation Instructions (Windows)
+===========================================================
+
+INCLUDED CITIES
+  - Dundee    (DND)
+  - Edinburgh (EDI)
+  - Glasgow   (GLA)
+
+PLANNED CITIES (not included yet — do not copy these into the patcher)
+  - Aberdeen  (ABD)
+  - Inverness (INV)
+  - Stirling  (STL)
+  - Perth     (PTH)
+
+INCLUDED FEATURES (when data files are present)
+  - Population demand data   (demand_data.json / demand_data.json.gz)
+  - Road network             (roads.geojson / roads.geojson.gz)
+  - Buildings index          (buildings_index.json / buildings_index.json.gz)
+  - Runways / taxiways data  (runways_taxiways.geojson / runways_taxiways.geojson.gz)
+    (optional — only included if airport/university data was generated for that city)
+
+NOT INCLUDED
+  - Building depths
+  - Ocean/water depths
+  (These may be added by contributors in a future update.)
+
+-----------------------------------------------------------
+ PREREQUISITES
+-----------------------------------------------------------
+
+1. Download Kronifer's Subway Builder Patcher
+   https://github.com/Kronifer/subwaybuilder-patcher/tree/main
+   Follow any setup steps in the patcher's own README first.
+
+2. Install Git for Windows (if not already installed)
+   https://gitforwindows.org/
+   This provides Git Bash, which is used to run serve.sh.
+
+-----------------------------------------------------------
+ INSTALLATION STEPS
+-----------------------------------------------------------
+
+STEP 1 — Get PMTiles CLI
+  a. Download the pmtiles.exe binary for Windows from:
+       https://github.com/protomaps/go-pmtiles/releases
+  b. Place pmtiles.exe into the patcher's  map_files/  folder.
+     (This is the same folder where .pmtiles tile files live.)
+
+STEP 2 — Copy map tiles into the patcher
+  a. From THIS repo's  map_tiles/  folder, copy the city tile files:
+       DND.pmtiles
+       EDI.pmtiles
+       GLA.pmtiles
+  b. Paste them into the patcher's  map_files/  folder
+     (alongside pmtiles.exe from Step 1).
+  Note: if a .pmtiles file is missing it means tiles have not been
+  generated yet — check the repo's Releases or Issues for status.
+
+STEP 3 — Copy processed data into the patcher
+  a. From THIS repo's  processed_data/  folder, copy each city subfolder:
+       processed_data/DND/
+       processed_data/EDI/
+       processed_data/GLA/
+  b. Paste them into the patcher's corresponding processed-data directory
+     (consult the patcher README for the exact destination path).
+  c. Each city folder must contain:
+       buildings_index.json   OR  buildings_index.json.gz
+       demand_data.json       OR  demand_data.json.gz
+       roads.geojson          OR  roads.geojson.gz
+       runways_taxiways.geojson  OR  runways_taxiways.geojson.gz
+  Note: some packs use non-gzipped files; others use .gz. Either form
+  is accepted by the patcher. If both exist in a folder, that is fine.
+
+STEP 4 — Edit the patcher's config.js
+  a. Open  config.js  in the patcher root in a text editor.
+  b. Find the  places: [ ... ]  array.
+  c. Replace everything INSIDE the square brackets with the full
+     contents of THIS repo's  city_data.txt  file.
+  d. Save config.js.
+
+STEP 5 — Patch the game (run ONLY this script)
+  Open Git Bash (or any terminal) in the patcher folder and run:
+
+    node ./scripts/patch_game.js
+
+  !! IMPORTANT — Do NOT run the following scripts !!
+  These regenerate raw data and will overwrite or break things:
+
+    DO NOT RUN:  npm run all
+    DO NOT RUN:  node ./scripts/download_tiles.js
+    DO NOT RUN:  node ./scripts/download_data.js
+    DO NOT RUN:  node ./scripts/process_data.js
+
+STEP 6 — Serve and play
+  In the patcher folder, run:
+
+    cd scripts
+    ./serve.sh
+
+  Then launch the game via the patcher's  Subway Builder.exe
+
+-----------------------------------------------------------
+ TROUBLESHOOTING
+-----------------------------------------------------------
+
+City not appearing in the city list
+  - Check that the "code" value in city_data.txt exactly matches
+    the folder name in processed_data/ and the .pmtiles filename.
+    (Codes are case-sensitive: DND, EDI, GLA — all uppercase.)
+
+Tiles appear blank / no map shown
+  - Confirm pmtiles.exe is inside the patcher's map_files/ folder.
+  - Confirm serve.sh is still running in the background.
+
+Data load errors / city loads but has no buildings or demand
+  - Check that each processed_data/<CODE>/ folder contains the four
+    expected files (see Step 3c above).
+  - Check for gzip vs non-gzip mismatch — try renaming .json.gz to
+    .json (or vice-versa) if the patcher version you have requires one form.
+
+-----------------------------------------------------------
+ CREDITS
+-----------------------------------------------------------
+
+Data generated from public OSM and public population/jobs datasets;
+methodology to be documented.
+
+Scotland Cities Pack contributors: see README.md.
+Patcher by Kronifer: https://github.com/Kronifer/subwaybuilder-patcher
