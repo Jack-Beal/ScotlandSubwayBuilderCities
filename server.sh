@@ -5,4 +5,4 @@ echo "[ScotlandCities] Installing server dependencies..."
 cd "$SCRIPT_DIR/server"
 npm install
 echo "[ScotlandCities] Starting server on http://localhost:8081 ..."
-node server.mjs
+node server.mjs "$@"
