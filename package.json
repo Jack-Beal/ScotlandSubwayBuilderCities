@@ -7,6 +7,7 @@
     "gen:buildings": "node tools/generate_buildings_index.mjs",
     "gen:demand": "node tools/generate_demand_data.mjs",
     "gen:all": "node tools/gen_all.mjs",
-    "validate": "node tools/validate_outputs.mjs"
+    "validate": "node tools/validate_outputs.mjs",
+    "serve": "cd server && npm install --prefer-offline && node server.mjs"
   }
 }
