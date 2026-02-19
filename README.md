@@ -13,14 +13,80 @@ that adds Scottish metro areas: **Dundee**, **Edinburgh**, and **Glasgow**.
 
 1. **Download the latest release** from
    [Releases](https://github.com/Jack-Beal/ScotlandSubwayBuilderCities/releases).
-2. **Install the mod** — copy the `scotland-cities/` folder into the game's
-   mods directory.
+2. **Install the mod** — copy the `mods/dnd-localhost/` folder into the game's
+   mods directory (see [Mod Installation](#mod-installation) below).
 3. **Place data files** — unzip each `data-<CODE>.zip` into the matching
    `data/<CODE>/` folder.
 4. **Place tile files** — copy each `<CODE>.pmtiles` file into `server/tiles/`.
-5. **Start the server** — run `server.bat` (Windows) or `./server.sh`
-   (Mac/Linux) to start the local tile/data server at `http://localhost:8081`.
-6. **Play** — launch the game; a "Scotland" tab should appear in the city picker.
+5. **Start the server** — see [Starting the Server](#starting-the-server) below.
+6. **Play** — launch the game; enable the **Dundee (DND) Localhost** mod and
+   restart — a "Dundee (local)" tab will appear in the city picker.
+
+---
+
+## Mod Installation
+
+The mod folder to copy into the game is `mods/dnd-localhost/`.
+
+### Finding the game's mods directory
+
+1. In Subway Builder, open **Settings → System → Open Saves Folder**.
+2. Navigate **up one level** from the saves folder; you should see a `mods/`
+   directory (create it if it does not exist).
+
+On macOS this is usually:
+
+```
+/Users/<you>/Library/Application Support/Subway Builder/mods/
+```
+
+### Copy the mod
+
+Copy `mods/dnd-localhost/` into the game `mods/` folder so the result is:
+
+```
+<game mods directory>/
+  dnd-localhost/
+    manifest.json
+    index.js
+```
+
+### Enable the mod in the game
+
+1. Launch Subway Builder.
+2. Open **Settings → Mods**.
+3. Find **Dundee (DND) Localhost** and toggle it **on**.
+4. Restart the game when prompted.
+
+---
+
+## Starting the Server
+
+### macOS — one-click launcher (recommended)
+
+Double-click `launcher/Start DND.command` in Finder.
+
+> If macOS shows a security warning, right-click the file → **Open** → **Open**
+> the first time to grant permission.
+
+The Terminal window will open, install dependencies automatically, start the
+server, and display instructions for enabling the mod.
+
+### Windows
+
+Double-click `server.bat` at the repo root.
+
+### Mac / Linux (terminal)
+
+```bash
+./server.sh
+```
+
+### npm
+
+```bash
+npm run serve
+```
 
 ---
 
@@ -48,6 +114,12 @@ for future releases.
   scotland-cities/    ← copy into game mods directory
     manifest.json
     index.js
+  mods/
+    dnd-localhost/    ← copy into game mods directory for DND localhost mod
+      manifest.json
+      index.js
+  launcher/
+    Start DND.command ← macOS double-click launcher (starts server automatically)
   data/               ← place downloaded data files here
     DND/
     EDI/
@@ -91,6 +163,7 @@ Two paths are available:
 | [docs/release_process.md](docs/release_process.md) | How to publish a release |
 | [server/README.md](server/README.md) | Local server setup |
 | [data/README.md](data/README.md) | Data folder layout |
+| [mods/dnd-localhost/README.md](mods/dnd-localhost/README.md) | DND localhost mod setup |
 
 ---
 

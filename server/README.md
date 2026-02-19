@@ -36,6 +36,7 @@ npm start
 |-----|-------------|
 | `GET /health` | JSON health check (`{"status":"ok"}`) |
 | `GET /data/<CODE>/<file>` | `data/<CODE>/<file>` in repo root |
+| `GET /data/<file>` | `data/DND/<file>` (fallback alias for the default city) |
 | `GET /server/tiles/<file>` | `server/tiles/<file>` (range-request capable) |
 | `GET /<CODE>/<z>/<x>/<y>.mvt` | Individual MVT tile read from `server/tiles/<CODE>.pmtiles` |
 | `GET /<NAME>.pmtiles` | `server/tiles/<NAME>.pmtiles` (range-request capable) |

@@ -17,25 +17,33 @@ game at a locally-running tile/data server (`http://127.0.0.1:8081`).
 
 ## 1. Start the local server
 
-From the repository root:
+### macOS — one-click launcher (recommended)
+
+Double-click `launcher/Start DND.command` from the repository root in Finder.
+
+> If macOS shows a security warning, right-click → **Open** → **Open** the first
+> time to grant permission.
+
+The Terminal window will install dependencies automatically, start the server,
+and display further instructions.
+
+### Windows
+
+Double-click `server.bat` at the repo root.
+
+### Mac / Linux (terminal)
 
 ```bash
-cd server && npm install && npm start -- --port 8081 --host 127.0.0.1
+./server.sh
 ```
-
-Alternatively use the convenience scripts at the repo root:
-
-| Platform | Command |
-|----------|---------|
-| Windows  | `server.bat` |
-| Mac/Linux | `./server.sh` |
 
 Verify the server is up:
 
 ```
-GET http://127.0.0.1:8081/health        → 200 OK
-GET http://127.0.0.1:8081/DND/15/…     → MVT tile
-GET http://127.0.0.1:8081/data/DND/…   → compressed data file
+GET http://127.0.0.1:8081/health              → 200 OK
+GET http://127.0.0.1:8081/DND/15/…           → MVT tile
+GET http://127.0.0.1:8081/data/DND/…         → compressed data file (full path)
+GET http://127.0.0.1:8081/data/buildings_index.json.gz → same file (alias)
 ```
 
 ---
